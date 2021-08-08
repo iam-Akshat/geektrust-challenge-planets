@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { ChangeEvent, useMemo, useState } from "react";
+import { useQueryClient } from "react-query";
 import { Planets } from "../api/getPlanets";
 import { Vehicles } from "../api/getVehicles";
 import { RadioButton } from "./RadioButton";
 
 interface VehicleSelectorProps {
-    vehicles:Vehicles[]
     selectedPlanet: Planets
     selectedPlanets: string[]
     onVehicleChange:Function,
@@ -13,7 +13,9 @@ interface VehicleSelectorProps {
     idx:number
 }
 
-export const VehicleSelector: React.FC<VehicleSelectorProps> = ({vehicles,selectedPlanet,onVehicleChange,selectedVehicles,idx}) => {
+export const VehicleSelector: React.FC<VehicleSelectorProps> = ({selectedPlanet,onVehicleChange,selectedVehicles,idx}) => {
+    const qc = useQueryClient()
+    const vehicles = qc.getQueryData('vehicles') as Vehicles[]
     const [checked,setChecked] = useState('')
 
         const availableVehiclesButtons = useMemo(()=>{

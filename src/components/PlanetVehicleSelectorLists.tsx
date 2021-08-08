@@ -16,9 +16,7 @@ interface PlanetVehicleSelectorListsProps {
 export const PlanetVehicleSelectorLists: React.FC<PlanetVehicleSelectorListsProps> = ({ numOfPlanets = 4, onPlanetChange, selectedPlanets,onVehicleChange,selectedVehicles }) => {
     const { data: planets, error: planetsError, isLoading: isPlanetsLoading } = useGetPlanets()
     const { data: vehicles, error: vehiclesError, isLoading: isVehiclesLoading } = useGetVehicles()
-    console.log(planets);
-    console.log(vehicles);
-    
+
     const selectorLists = useMemo(() => {
         const list = []
         for (let x = 0; x < numOfPlanets; x++) {
@@ -26,8 +24,6 @@ export const PlanetVehicleSelectorLists: React.FC<PlanetVehicleSelectorListsProp
                 <PlanetVehicleSelector
                     onSelect={onPlanetChange}
                     onVehicleChange={onVehicleChange}
-                    planets={planets}
-                    vehicles={vehicles}
                     selectedPlanets={selectedPlanets}
                     selectedVehicles={selectedVehicles}
                     idx={x} />)
