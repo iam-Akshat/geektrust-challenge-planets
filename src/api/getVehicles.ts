@@ -4,7 +4,7 @@ export interface Vehicles {
     name: string,
     total_no: number,
     max_distance: number,
-    speead: number
+    speed: number
 }
 const getVehicles = async () => {
     const { data } = await customFetch.get<Vehicles[]>('/vehicles')
