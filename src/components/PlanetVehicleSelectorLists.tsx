@@ -26,7 +26,8 @@ export const PlanetVehicleSelectorLists: React.FC<PlanetVehicleSelectorListsProp
                     onVehicleChange={onVehicleChange}
                     selectedPlanets={selectedPlanets}
                     selectedVehicles={selectedVehicles}
-                    idx={x} />)
+                    idx={x}
+                    key={x} />)
         }
         return list
     }, [numOfPlanets, planets, vehicles, onPlanetChange, onVehicleChange, selectedPlanets, selectedVehicles])
