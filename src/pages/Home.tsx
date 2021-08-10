@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { FindButton } from "../components/FindButton";
 import { Header } from "../components/Header";
 import { PlanetVehicleSelectorLists } from "../components/PlanetVehicleSelectorLists";
+import { TimeSum } from "../components/TimeSum";
 
 const Home: React.FC = () => {
 
@@ -37,6 +39,12 @@ const Home: React.FC = () => {
                 selectedPlanets={selectedPlanets}
                 selectedVehicles={selectedVehicles}
                 onVehicleChange={onVehicleChange} />
+                <h3>
+                <TimeSum selectedPlanets={selectedPlanets} selectedVehicles={selectedVehicles} />
+                </h3>
+            </div>
+            <div className="w-100">
+                <FindButton selectedPlanets={selectedPlanets} selectedVehicles={selectedVehicles}/>
             </div>
         </div>
     )
