@@ -3,6 +3,7 @@ import { ChangeEvent, useMemo, useState } from "react";
 import { useQueryClient } from "react-query";
 import { Planets } from "../api/getPlanets";
 import { Vehicles } from "../api/getVehicles";
+import { freqCounter } from "../utils/freqCounter";
 import { RadioButton } from "./RadioButton";
 
 interface VehicleSelectorProps {
@@ -19,14 +20,7 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({selectedPlanet,
     const [checked,setChecked] = useState('')
 
         const availableVehiclesButtons = useMemo(()=>{
-            const bookedVehicles:{[key:string] :number} = {}
-             Object.values(selectedVehicles).forEach(vehicle =>{
-                 if(bookedVehicles[vehicle]){
-                    bookedVehicles[vehicle] += 1
-                 }else{
-                    bookedVehicles[vehicle] = 1
-                 }
-             })
+            const bookedVehicles:{[key:string] :number} = freqCounter(selectedVehicles)
              
             const onClick = (e : ChangeEvent<HTMLInputElement>) =>{
                 setChecked(e.target.value)
