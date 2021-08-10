@@ -7,7 +7,7 @@ interface ResultProps {
 
 }
 
-export const Result: React.FC<ResultProps> = ({ }) => {
+export const Result: React.FC<ResultProps> = () => {
     const { state: result }: { state: FindFalconeAPIOutput } = useLocation()
     if (!result) return <Redirect to="/" />
     return (
