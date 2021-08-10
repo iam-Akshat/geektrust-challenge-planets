@@ -26,6 +26,7 @@ export const PlanetVehicleSelector: React.FC<PlanetVehicleSelectorProps> = ({onS
     }
         return (
             <div className="d-flex flex-column">
+                <div>{`Destination: ${idx+1}`}</div>
                 <select  value={planet} onChange={onChange} >
                     <option value=''>{planet}</option>
                     {availablePlanets.map(ap => <option key={Math.random()} value={ap.name}>{ap.name}</option>)}
