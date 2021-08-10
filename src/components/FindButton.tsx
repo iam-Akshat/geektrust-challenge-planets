@@ -16,7 +16,7 @@ export const FindButton: React.FC<FindButtonProps> = ({ selectedPlanets, selecte
     const { mutate: getToken, isLoading: gettingToken, isError: tokenError,data:token } = usePostToken()
     const { mutate: findFalcone, isLoading: isFinding, isError: findError,data:findResult } = usePostFindFalcone()
     const handleClick = () => {
-        if (selectedVehicles.length !== 4) {
+        if (selectedVehicles.filter(veh=> veh !== undefined).length !== 4) {
             setError('Choose all vehicles first')
             return
         };
