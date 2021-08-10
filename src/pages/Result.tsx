@@ -27,11 +27,10 @@ export const Result: React.FC<ResultProps> = ({ }) => {
                         <h2>{`Planet Found: ${result.planet_name}`}</h2>
                     </div>
                 }
-                <button className="btn btn-success mt-2" style={{ width: 200 }}>
-                    <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
-                        Start Again
+                
+                    <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>    
+                        <button className="btn btn-success mt-2" style={{ width: 200 }}>Start Again</button>
                     </Link>
-                </button>
             </div>
             <Footer />
         </div>
