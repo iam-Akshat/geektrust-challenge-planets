@@ -9,6 +9,7 @@ const Home: React.FC = () => {
 
     const [selectedPlanets, setSelectedPlanets] = useState<string[]>([])
     const [selectedVehicles, setSelectedVehicles] = useState<string[]>([])
+    const [resetKey,setResetKey] = useState(0)
     
     const onPlanetChange = (value:string,idx:number) =>{
         setSelectedPlanets((oldPlanets)=>{
@@ -30,7 +31,11 @@ const Home: React.FC = () => {
             return [...oldVehicles]
         })
     }
-
+    const reset = () =>{
+        setSelectedPlanets(new Array<string>())
+        setSelectedVehicles(new Array<string>())
+        setResetKey(resetKey+1)
+    }
     return(
         <>
         <div className="container-xl h-100 d-flex flex-column">
@@ -40,13 +45,16 @@ const Home: React.FC = () => {
                 onPlanetChange={onPlanetChange}
                 selectedPlanets={selectedPlanets}
                 selectedVehicles={selectedVehicles}
-                onVehicleChange={onVehicleChange} />
+                onVehicleChange={onVehicleChange}
+                key={resetKey}
+                 />
                 <h3>
                 <TimeSum selectedPlanets={selectedPlanets} selectedVehicles={selectedVehicles} />
                 </h3>
             </div>
-            <div className="w-100">
+            <div className="w-100 d-flex justify-content-around mt-5">
                 <FindButton selectedPlanets={selectedPlanets} selectedVehicles={selectedVehicles}/>
+                <button className="btn btn-warning w-25" onClick={reset}>Reset</button>
             </div>
             <Footer />
         </div>
