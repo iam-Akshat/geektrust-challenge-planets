@@ -1,5 +1,6 @@
 import { Link, Redirect, useLocation } from "react-router-dom";
 import { FindFalconeAPIOutput } from "../api/postFindFalcone";
+import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 
 interface ResultProps {
@@ -10,7 +11,7 @@ export const Result: React.FC<ResultProps> = ({ }) => {
     const { state: result }: { state: FindFalconeAPIOutput } = useLocation()
     if (!result) return <Redirect to="/" />
     return (
-        <div>
+        <div className="container-xl h-100 d-flex flex-column">
             <Header heading="Result page" />
             <div className="container d-flex flex-column justify-content-center align-items-center mt-5">
                 {result.error}
@@ -32,8 +33,7 @@ export const Result: React.FC<ResultProps> = ({ }) => {
                     </Link>
                 </button>
             </div>
-
-
+            <Footer />
         </div>
 
     );
